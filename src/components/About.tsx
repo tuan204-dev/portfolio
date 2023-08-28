@@ -3,7 +3,6 @@ import { tools } from '../constants/index'
 import { motion } from 'framer-motion'
 
 const About: FC = () => {
-  console.log(tools)
   return (
     <div id="about" className="w-full flex justify-center bg-white dark:bg-gray-800">
       <div className="max-w-7xl px-6 md:px-8 pt-24 pb-12 flex flex-col justify-center items-center">

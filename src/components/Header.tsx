@@ -17,6 +17,12 @@ const Header: FC = () => {
   const [isMenuMounted, setMenuMounted] = useState<boolean>(false)
   const [xSpring, setXSpring] = useState<number>(-120)
 
+  useEffect(() => {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setDarkMode(true)
+    }
+  }, [])
+
   const handleChangeCategoryType = (name: string) => {
     setCategoryType(name)
   }
@@ -84,7 +90,9 @@ const Header: FC = () => {
 
   return (
     <header className="bg-white fixed z-50 top-0 right-0 left-0 dark:bg-gray-700 duration-150 w-full flex justify-between items-center py-4 md:px-10 px-2 shadow-lg">
-      <div className='text-xl text-black dark:text-white font-medium'>{'<tuan204.dev/>'}</div>
+      <div className="text-xl text-black dark:text-white font-medium">
+        {'<tuan204.dev/>'}
+      </div>
       <div className="flex justify-end items-center h-10">
         <nav className="hidden md:flex gap-8">
           {categories?.map((item) => (

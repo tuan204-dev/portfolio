@@ -11,7 +11,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ name, desc, thumb, repo, deploy }) 
       target="_blank"
       href={deploy}
     >
-      <div className="h-[30rem] max-w-[calc(100vw-24px)] w-[33rem] flex flex-col flex-1 overflow-hidden rounded-3xl shadow-xl bg-[#efefef] dark:bg-[#252629]">
+      <div className="h-[30rem] max-w-[calc(100vw-24px)] w-[33rem] flex flex-col flex-1 overflow-hidden rounded-3xl shadow-lg bg-[#efefef] dark:bg-[#252629] hover:scale-[1.03] duration-[100ms] transition-transform ease-linear">
         <div className="h-[20rem] overflow-hidden">
           <img
             src={thumb}
