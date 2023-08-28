@@ -5,8 +5,8 @@ import { motion } from 'framer-motion'
 const ProjectItem: FC<ProjectItemProps> = ({ name, desc, thumb, repo, deploy }) => {
   return (
     <motion.a
-      initial={{ translateY: 100 }}
-      whileInView={{ translateY: 0 }}
+      initial={{ translateY: 100, opacity: 0 }}
+      whileInView={{ translateY: 0 , opacity: 1}}
       transition={{ type: 'spring' }}
       target="_blank"
       href={deploy}
