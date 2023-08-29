@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 
 const About: FC = () => {
   return (
-    <div id="about" className="w-full flex justify-center bg-white dark:bg-gray-800">
-      <div className="max-w-7xl px-6 md:px-8 pt-24 pb-12 flex flex-col justify-center items-center">
+    <div id="about" className="w-full flex justify-center bg-white dark:bg-gray-800 duration-150">
+      <div className="w-[min(80rem,100%)] px-6 md:px-8 pt-24 pb-12 flex flex-col justify-center items-center">
         <motion.h2
           initial={{ translateY: 100, opacity: 0 }}
           whileInView={{ translateY: 0, opacity: 1 }}

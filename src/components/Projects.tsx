@@ -46,9 +46,9 @@ const Projects: FC = () => {
   return (
     <div
       id="projects"
-      className="w-full flex justify-center bg-gray-100 dark:bg-slate-700"
+      className="w-full flex justify-center bg-gray-100 dark:bg-slate-700 duration-150"
     >
-      <div className="w-[min(80rem,100vw)] px-4 md:px-8 pt-24 pb-12 flex flex-col">
+      <div className="w-[min(80rem,100%)] px-4 md:px-8 pt-24 pb-12 flex flex-col">
         <motion.h2
           initial={{ translateY: 100, opacity: 0 }}
           whileInView={{ translateY: 0, opacity: 1 }}

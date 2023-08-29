@@ -91,14 +91,14 @@ const Header: FC = () => {
   return (
     <header className="bg-white fixed z-50 top-0 right-0 left-0 dark:bg-gray-700 duration-150 w-full flex justify-between items-center py-4 md:px-10 px-2 shadow-lg">
       <div className="text-xl text-black dark:text-white font-medium">
-        {'<tuan204.dev/>'}
+        <a href="#">{'<tuan204.dev/>'}</a>
       </div>
       <div className="flex justify-end items-center h-10">
         <nav className="hidden md:flex gap-8">
           {categories?.map((item) => (
             <div onClick={() => handleChangeCategoryType(item?.name)} key={item?.key}>
               <a
-                className={`flex justify-center items-center text-black dark:text-white hover:text-white hover:bg-blue-500 rounded-md cursor-pointer text-md font-semibold py-2 px-3 transition-colors ${
+                className={`flex justify-center items-center text-black dark:text-white hover:text-white hover:bg-blue-500 rounded-md cursor-pointer text-md font-semibold py-2 px-3 transition-colors select-none ${
                   item?.isActive ? 'bg-blue-500 text-white' : ''
                 }`}
                 href={item?.href}
@@ -110,12 +110,12 @@ const Header: FC = () => {
         </nav>
 
         <button className="ml-8" onClick={() => setDarkMode((prev) => !prev)}>
-          <div className="text-xl dark:text-white">
+          <div className="text-xl dark:text-white outline-none">
             {isDarkMode ? <FiMoon /> : <FiSun />}
           </div>
         </button>
         <div className=" ml-3 block md:hidden">
-          <div className="relative">
+          <div className="relative outline-none">
             <Hamburger
               toggled={isMenuOpen}
               toggle={handleToggleMenu}

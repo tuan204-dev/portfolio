@@ -1,11 +1,12 @@
 import { FC, useRef } from 'react'
 import { socialNetworkLinks } from '../constants/index'
 import toast, { Toaster } from 'react-hot-toast'
+import { motion } from 'framer-motion'
 
 const contacts = [
   {
     title: 'Email',
-    content: 'tuandangit2004@gmail.com',
+    content: 'contact.tuandang@gmail.com',
   },
   {
     title: 'Address',
@@ -19,7 +20,7 @@ const Contact: FC = () => {
   const msgRef = useRef<any>()
 
   const handleSubmit = () => {
-    const href = `mailto:${'tuandangit2004@gmail.com'}?subject=${
+    const href = `mailto:${'contact.tuandang@gmail.com'}?subject=${
       subjectRef?.current?.value
     }&body=${msgRef?.current?.value}`
 
@@ -32,20 +33,33 @@ const Contact: FC = () => {
   }
 
   return (
-    <div id="contact" className="w-full flex justify-center bg-white dark:bg-gray-800">
-      <div className="max-w-7xl px-6 md:px-8 pt-24 pb-12 flex flex-col justify-center">
-        <h2 className="text-black dark:text-white text-5xl font-bold text-center">
+    <div id="contact" className="w-full flex justify-center bg-white dark:bg-gray-800 duration-150">
+      <div className="w-[min(80rem,100%)] px-6 md:px-8 pt-24 pb-12 flex flex-col justify-center md:items-stretch">
+        <motion.h2
+          initial={{ translateY: 100, opacity: 0 }}
+          whileInView={{ translateY: 0, opacity: 1 }}
+          transition={{ type: 'spring' }}
+          className="text-black dark:text-white text-5xl font-bold text-center"
+        >
           Contact
-        </h2>
-        <div className="flex flex-col">
+        </motion.h2>
+        <motion.div
+          initial={{ translateY: 100, opacity: 0 }}
+          whileInView={{ translateY: 0, opacity: 1 }}
+          transition={{ type: 'spring' }}
+          className="flex flex-col"
+        >
           <h3 className="mt-12 text-3xl font-semibold text-blue-500">Connect with me</h3>
-          <span className="text-xl text-gray-500 dark:text-white text-start w-3/5 mt-6">
+          <span className="text-xl text-gray-500 dark:text-white text-start w-full md:w-3/5 mt-6">
             If you want to know more about me or my work, or if you would just like to say
             hello, send me a message. I'd love to hear from you.
           </span>
-        </div>
+        </motion.div>
         <div className="flex flex-col lg:flex-row gap-20">
-          <form
+          <motion.form
+            initial={{ translateY: 100, opacity: 0 }}
+            whileInView={{ translateY: 0, opacity: 1 }}
+            transition={{ type: 'spring' }}
             target="_blank"
             onSubmit={() => handleSubmit()}
             className="flex flex-col w-full lg:w-1/2 my-6"
@@ -106,8 +120,13 @@ const Contact: FC = () => {
                 Submit
               </button>
             </div>
-          </form>
-          <div className="flex flex-col w-full lg:w-1/2 items-end gap-5 ">
+          </motion.form>
+          <motion.div
+            initial={{ translateY: 100, opacity: 0 }}
+            whileInView={{ translateY: 0, opacity: 1 }}
+            transition={{ type: 'spring' }}
+            className="flex flex-col w-full lg:w-1/2 items-end gap-5 "
+          >
             {contacts?.map((item) => (
               <div
                 onClick={() => handleCopyText(item?.content)}
@@ -139,12 +158,14 @@ const Contact: FC = () => {
               </div>
             </div>
             <div></div>
-          </div>
+          </motion.div>
         </div>
       </div>
-      <Toaster toastOptions={{
-        className: 'dark:bg-dark-cloud dark:text-white'
-      }} />
+      <Toaster
+        toastOptions={{
+          className: 'dark:bg-dark-cloud dark:text-white',
+        }}
+      />
     </div>
   )
 }
