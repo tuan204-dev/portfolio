@@ -2,7 +2,7 @@ import { FC } from 'react'
 import spotifyIcon from '../assets/imgs/projects/spotify.png'
 import fitnessIcon from '../assets/imgs/projects/fitness.png'
 import ProjectItem from './ProjectItem'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 export interface ProjectItem {
   thumb: string
   name: string
@@ -12,20 +12,6 @@ export interface ProjectItem {
 }
 
 const projects: ProjectItem[] = [
-  {
-    name: 'Spotify Clone',
-    desc: 'Spotify clone with Vite - React - TS . Using Spotify API, Rapid API and Youtube API.',
-    thumb: spotifyIcon,
-    repo: 'https://github.com/tuan204-dev/spotify-react-typescript',
-    deploy: 'https://spotify-clone-204.netlify.app/',
-  },
-  {
-    name: 'Fitness Gym',
-    desc: 'Fitness Gym website provides a lot of exercises',
-    thumb: fitnessIcon,
-    repo: 'https://github.com/tuan204-dev/fitness',
-    deploy: 'https://fitness-gym-204.netlify.app/',
-  },
   {
     name: 'Spotify Clone',
     desc: 'Spotify clone with Vite - React - TS . Using Spotify API, Rapid API and Youtube API.',

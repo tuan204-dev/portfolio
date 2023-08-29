@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { motion } from 'framer-motion'
 import webDevImg from '../assets/imgs/webdev.svg'
 import { TypeAnimation } from 'react-type-animation'
+import CV from '../assets/CV/Dang Anh Tuan.pdf'
 
 const Home: FC = () => {
   return (
@@ -33,9 +34,9 @@ const Home: FC = () => {
             Telecommunications Institute of Technology (PTIT), focusing on web
             development.
           </span>
-          <button className="text-white w-full md:w-28 mt-6 bg-blue-500 rounded-md cursor-pointer text-md font-semibold py-2 px-3 transition-colors">
+          <a download={'Dang-Anh-Tuan-CV'} href={CV} className="text-white w-full md:w-28 mt-6 bg-blue-500 rounded-md cursor-pointer text-md font-semibold py-2 px-3 transition-colors text-center">
             Resume
-          </button>
+          </a>
         </motion.div>
         <div className="w-full md:w-1/2 ">
           <motion.img
