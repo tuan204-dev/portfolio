@@ -9,6 +9,7 @@ interface CategoryItem {
   key: number
   name: string
   href: string
+  id: string
   isActive: boolean
 }
 
@@ -59,25 +60,29 @@ const Header: FC = () => {
       {
         key: 1,
         name: 'Home',
-        href: '#',
+        href: '#home',
+        id: 'home',
         isActive: activeSection === SECTIONS.HOME,
       },
       {
         key: 2,
         name: 'About',
         href: '#about',
+        id: 'about',
         isActive: activeSection === SECTIONS.ABOUT,
       },
       {
         key: 3,
         name: 'Projects',
         href: '#projects',
+        id: 'projects',
         isActive: activeSection === SECTIONS.PROJECTS,
       },
       {
         key: 4,
         name: 'Contact',
         href: '#contact',
+        id: 'contact',
         isActive: activeSection === SECTIONS.CONTACT,
       },
     ],
@@ -92,6 +97,13 @@ const Header: FC = () => {
     }
   }, [isDarkMode])
 
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between w-full px-2 py-4 duration-150 bg-white shadow-lg dark:bg-gray-700 md:px-10">
       <div className="text-xl font-medium text-black dark:text-white">
@@ -100,15 +112,14 @@ const Header: FC = () => {
       <div className="flex items-center justify-end h-10">
         <nav className="hidden gap-8 md:flex">
           {categories?.map((item) => (
-            <div onClick={() => handleChangeCategoryType(item?.name)} key={item?.key}>
-              <a
+            <div onClick={() => handleScroll(item?.id)} key={item?.key}>
+              <button
                 className={`flex justify-center items-center text-black dark:text-white rounded-md cursor-pointer text-md font-semibold py-2 px-3 transition select-none ${
                   item?.isActive ? 'bg-blue-500 text-white' : ''
                 }`}
-                href={item?.href}
               >
                 {item?.name}
-              </a>
+              </button>
             </div>
           ))}
         </nav>

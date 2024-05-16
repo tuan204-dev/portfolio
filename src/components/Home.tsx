@@ -12,7 +12,7 @@ const Home: FC = () => {
   return (
     <div
       ref={ref}
-      id="#"
+      id="home"
       className="h-[max(calc(100vh-72px),600px)] bg-light-cloud dark:bg-dark-cloud duration-150 bg-cover flex justify-center items-center mt-[72px]"
     >
       <div className="flex flex-col items-center justify-between w-full gap-8 px-8 md:flex-row max-w-7xl">
