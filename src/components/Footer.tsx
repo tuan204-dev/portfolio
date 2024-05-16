@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 const Footer: FC = () => {
   return (
-    <div className="w-full flex justify-center items-center bg-gray-100 dark:bg-slate-900 py-4 shadow-xl">
-      <span className="text-lg md:text-xl font-semibold text-black dark:text-white">
+    <div className="flex items-center justify-center w-full py-4 bg-gray-100 shadow-xl dark:bg-slate-900">
+      <span className="text-lg font-semibold text-black md:text-xl dark:text-white">
         Made with ❤ by{' '}
         <a
           className="hover:underline"
@@ -17,4 +17,4 @@ const Footer: FC = () => {
   )
 }
 
-export default Footer
+export default memo(Footer)

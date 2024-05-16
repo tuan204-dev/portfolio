@@ -1,16 +1,20 @@
-import { FC } from 'react'
-import { tools } from '../constants/index'
 import { motion } from 'framer-motion'
+import { FC, memo } from 'react'
+import { tools } from '../constants/index'
+import { useInViewSection } from '../context/ScrollProvider'
+import { SECTIONS } from '../types/section'
 
 const About: FC = () => {
+  const ref = useInViewSection(SECTIONS.ABOUT)
+
   return (
-    <div id="about" className="w-full flex justify-center bg-white dark:bg-gray-800 duration-150">
+    <div ref={ref} id="about" className="flex justify-center w-full duration-150 bg-white dark:bg-gray-800">
       <div className="w-[min(80rem,100%)] px-6 md:px-8 pt-24 pb-12 flex flex-col justify-center items-center">
         <motion.h2
           initial={{ translateY: 100, opacity: 0 }}
           whileInView={{ translateY: 0, opacity: 1 }}
           transition={{ type: 'spring' }}
-          className="text-black dark:text-white text-5xl font-bold"
+          className="text-5xl font-bold text-black dark:text-white"
         >
           About Me
         </motion.h2>
@@ -48,14 +52,14 @@ const About: FC = () => {
             tablets, and desktops.
           </span>
         </motion.div>
-        <div className="flex flex-row flex-wrap justify-around mt-8">
+        <div className="grid w-full grid-cols-1 gap-6 mt-6 ssm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5">
           {tools?.map((item) => (
             <motion.div
               initial={{ translateY: 100, opacity: 0 }}
               whileInView={{ translateY: 0, opacity: 1 }}
               transition={{ type: 'spring' }}
               // viewport={{ once: true }}
-              className="w-52 flex flex-row items-center px-4 py-2 m-4 bg-gray-100 dark:bg-slate-50 rounded-lg shadow-sm"
+              className="flex flex-row items-center col-span-1 px-4 py-2 bg-gray-100 rounded-lg shadow-sm dark:bg-slate-50"
               key={item?.name}
             >
               <div className="w-12 h-12">
@@ -76,4 +80,4 @@ const About: FC = () => {
   )
 }
 
-export default About
+export default memo(About)

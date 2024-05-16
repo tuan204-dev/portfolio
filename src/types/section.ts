@@ -1,0 +1,6 @@
+export enum SECTIONS {
+  HOME = 'HOME',
+  ABOUT = 'ABOUT',
+  PROJECTS = 'PROJECTS',
+  CONTACT = 'CONTACT',
+}

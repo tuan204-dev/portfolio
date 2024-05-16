@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { Turn as Hamburger } from 'hamburger-react'
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC, memo, useEffect, useMemo, useState } from 'react'
 import { FiMoon, FiSun } from 'react-icons/fi'
+import { useScroll } from '../context/ScrollProvider'
+import { SECTIONS } from '../types/section'
 
 interface CategoryItem {
   key: number
@@ -16,6 +18,8 @@ const Header: FC = () => {
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
   const [isMenuMounted, setMenuMounted] = useState<boolean>(false)
   const [xSpring, setXSpring] = useState<number>(-120)
+
+  const {activeSection} = useScroll()
 
   useEffect(() => {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -56,28 +60,28 @@ const Header: FC = () => {
         key: 1,
         name: 'Home',
         href: '#',
-        isActive: categoryType === 'Home',
+        isActive: activeSection === SECTIONS.HOME,
       },
       {
         key: 2,
         name: 'About',
         href: '#about',
-        isActive: categoryType === 'About',
+        isActive: activeSection === SECTIONS.ABOUT,
       },
       {
         key: 3,
         name: 'Projects',
         href: '#projects',
-        isActive: categoryType === 'Projects',
+        isActive: activeSection === SECTIONS.PROJECTS,
       },
       {
         key: 4,
         name: 'Contact',
         href: '#contact',
-        isActive: categoryType === 'Contact',
+        isActive: activeSection === SECTIONS.CONTACT,
       },
     ],
-    [categoryType]
+    [categoryType, activeSection]
   )
 
   useEffect(() => {
@@ -89,16 +93,16 @@ const Header: FC = () => {
   }, [isDarkMode])
 
   return (
-    <header className="bg-white fixed z-50 top-0 right-0 left-0 dark:bg-gray-700 duration-150 w-full flex justify-between items-center py-4 md:px-10 px-2 shadow-lg">
-      <div className="text-xl text-black dark:text-white font-medium">
+    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between w-full px-2 py-4 duration-150 bg-white shadow-lg dark:bg-gray-700 md:px-10">
+      <div className="text-xl font-medium text-black dark:text-white">
         <a href="#">{'<tuan204.dev/>'}</a>
       </div>
-      <div className="flex justify-end items-center h-10">
-        <nav className="hidden md:flex gap-8">
+      <div className="flex items-center justify-end h-10">
+        <nav className="hidden gap-8 md:flex">
           {categories?.map((item) => (
             <div onClick={() => handleChangeCategoryType(item?.name)} key={item?.key}>
               <a
-                className={`flex justify-center items-center text-black dark:text-white hover:text-white hover:bg-blue-500 rounded-md cursor-pointer text-md font-semibold py-2 px-3 transition-colors select-none ${
+                className={`flex justify-center items-center text-black dark:text-white rounded-md cursor-pointer text-md font-semibold py-2 px-3 transition select-none ${
                   item?.isActive ? 'bg-blue-500 text-white' : ''
                 }`}
                 href={item?.href}
@@ -110,11 +114,11 @@ const Header: FC = () => {
         </nav>
 
         <button className="ml-8" onClick={() => setDarkMode((prev) => !prev)}>
-          <div className="text-xl dark:text-white outline-none">
+          <div className="text-xl outline-none dark:text-white">
             {isDarkMode ? <FiMoon /> : <FiSun />}
           </div>
         </button>
-        <div className=" ml-3 block md:hidden">
+        <div className="block ml-3 md:hidden">
           <div className="relative outline-none">
             <Hamburger
               toggled={isMenuOpen}
@@ -153,4 +157,4 @@ const Header: FC = () => {
   )
 }
 
-export default Header
+export default memo(Header)
